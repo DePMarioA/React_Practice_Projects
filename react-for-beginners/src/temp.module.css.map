@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAA;EACA,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,MAAM;CAC3B",
+    "sources": [
+        "temp.module.scss"
+    ],
+    "names": [],
+    "file": "temp.module.css"
+}
