@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react-for-beginners</title>
+</head>
+<body>
+    <span>total clicks: 0</span>
+    <button>Click me</button>
+</body>
+<script>const button = document.querySelector('button')
+const spn = document.querySelector('span')
+let counter = 0
+function handleClick(){
+    counter++
+    spn.innerText= `total clicks: ${counter}`
+    button.appendChild(span)
+}
+    button.addEventListener('click',handleClick)
+</script>
+</html>

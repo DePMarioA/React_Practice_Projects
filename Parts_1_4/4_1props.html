@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react-for-beginners</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <!--            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: 10,
+              border: 0,
+            }} -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- 1.60934  -->
+  <script type="text/babel">
+    function Btn({ banana }) {
+      // console.log(props);
+      //   function Btn(props) {
+      //props are properties that are sent to the funtion in this case banana is one of the property of  btn
+      // only argument is props containing object of all the properties passed
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: 10,
+            border: 0,
+          }}
+        >
+          {banana}
+        </button>
+      );
+    }
+    function App() {
+      return (
+        <div>
+          <Btn banana="Save Changes" />
+          <Btn banana="Continue" />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>
+
+<!-- <MinutesToHours />
+<KmToMiles /> -->

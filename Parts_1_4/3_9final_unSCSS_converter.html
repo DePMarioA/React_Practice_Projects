@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react-for-beginners</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- 1.60934  -->
+  <script type="text/babel">
+    function MinutesToHours() {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlip] = React.useState(false);
+      const onChange = (event) => {
+        setAmount((current) => (current = event.target.value));
+      };
+      const reset = () => {
+        setAmount((current) => (current = 0));
+      };
+      const onFlip = () => {
+        reset();
+        setFlip((current) => !current);
+      };
+
+      return (
+        <div>
+          <div>
+            <label htmlFor="Mins">Minutes</label>
+            <input
+              id="Mins"
+              placeholder="Mins"
+              type="number"
+              value={flipped ? amount * 60 : amount}
+              onChange={onChange}
+              disabled={flipped}
+            />
+          </div>
+          <div>
+            <h4>you want to convert {amount}</h4>
+            <label htmlFor="Hours">Hours</label>
+            <input
+              id="Hours"
+              placeholder="Hours"
+              type="number"
+              value={flipped ? amount : amount / 60}
+              onChange={onChange}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>invert</button>
+        </div>
+      );
+    }
+    function KmToMiles() {
+      const [amount, setAmount] = React.useState(0);
+      const [invert, setInvert] = React.useState(false);
+      const onChange = (event) => {
+        setAmount((current) => (current = event.target.value));
+      };
+      const onReset = () => {
+        setAmount((current) => (current = 0));
+      };
+      const onInvert = () => {
+        setInvert((current) => !current);
+        onReset();
+      };
+
+      return (
+        <div>
+          <h3>KM 2 M</h3>
+          <div>
+            <label htmlFor="kilometers">Kilometers</label>
+            <input
+              value={invert ? amount / 1.069 : amount}
+              id="kilometers"
+              type="number"
+              onChange={onChange}
+              disabled={invert}
+            />
+          </div>
+          <div>
+            <label htmlFor="miles">Miles</label>
+            <input
+              id="miles"
+              type="number"
+              onChange={onChange}
+              value={invert ? amount : amount * 1.069}
+              disabled={!invert}
+            />
+          </div>
+          <button onClick={onReset}>Reset</button>
+          <button onClick={onInvert}>Invert</button>
+        </div>
+      );
+    }
+    function App() {
+      const [index, setIndex] = React.useState("0");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      };
+
+      return (
+        <div>
+          <h1>Super Unit-converter</h1>
+          <select value={index} onChange={onSelect} name="" id="">
+            <option value="0">min 2 hours</option>
+            <option value="1">km to miles</option>
+          </select>
+          <hr />
+          {index === "0" ? <MinutesToHours /> : null}
+          {index === "1" ? <KmToMiles /> : null}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>
+
+<!-- <MinutesToHours />
+<KmToMiles /> -->

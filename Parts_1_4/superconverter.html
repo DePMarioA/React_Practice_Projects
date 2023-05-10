@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react-for-beginners</title>
+  </head>
+  <body>
+    <div id="root">
+      <h1>Super Unit-converter</h1>
+    </div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function App() {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlip] = React.useState(false);
+      const onChange = (event) => {
+        setAmount((current) => (current = event.target.value));
+      };
+      const reset = () => {
+        setAmount((current) => (current = 0));
+      };
+      const onFlip = () => {
+        reset();
+        setFlip((current) => !current);
+
+        console.log(flipped);
+      };
+
+      return (
+        <div>
+          <div>
+            {" "}
+            <label htmlFor="Mins">Minutes</label>
+            <input
+              value={flipped ? amount * 60 : amount}
+              id="Mins"
+              placeholder="Mins"
+              type="number"
+              onChange={onChange}
+              disabled={flipped}
+            />
+          </div>
+          <div>
+            <h4>you want to convert {amount}</h4>
+            <label htmlFor="Hours">Hours</label>
+            <input
+              id="Hours"
+              placeholder="Hours"
+              type="number"
+              value={flipped ? amount : amount / 60}
+              onChange={onChange}
+              disabled={!flipped}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>invert</button>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>
